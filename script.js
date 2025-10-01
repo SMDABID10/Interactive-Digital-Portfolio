@@ -1,25 +1,21 @@
-// DOM Elements
+
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section');
 const navbar = document.querySelector('.navbar');
 
-// Mobile Navigation Toggle
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     });
 });
-
-// Smooth scrolling for navigation links
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -27,7 +23,7 @@ navLinks.forEach(link => {
         const targetSection = document.querySelector(targetId);
         
         if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
+            const offsetTop = targetSection.offsetTop - 70; 
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -36,7 +32,6 @@ navLinks.forEach(link => {
     });
 });
 
-// Navbar background change on scroll
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(2, 73, 80, 0.98)';
@@ -47,7 +42,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Active navigation link highlighting
 window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
@@ -66,7 +60,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -81,7 +74,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
+
 const animateElements = document.querySelectorAll('.skill-category, .project-card, .stat, .contact-item');
 animateElements.forEach(el => {
     el.style.opacity = '0';
@@ -90,9 +83,9 @@ animateElements.forEach(el => {
     observer.observe(el);
 });
 
-// Typing animation for hero title
+
 function typeWriter(element, text, speed = 100) {
-    // Extract the text content without HTML tags for typing
+    
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = text;
     const plainText = tempDiv.textContent || tempDiv.innerText || '';
@@ -102,7 +95,7 @@ function typeWriter(element, text, speed = 100) {
     
     function type() {
         if (i < plainText.length) {
-            // Reconstruct the HTML with the typed portion
+            
             const typedText = plainText.substring(0, i + 1);
             element.innerHTML = text.replace(plainText, typedText);
             i++;
@@ -113,19 +106,10 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize typing animation when page loads
 window.addEventListener('load', () => {
-    // Disabled typing animation to prevent HTML tag display issues
-    // const heroTitle = document.querySelector('.hero-title');
-    // const originalText = heroTitle.innerHTML;
-    
-    // Add a small delay before starting the animation
-    // setTimeout(() => {
-    //     typeWriter(heroTitle, originalText, 50);
-    // }, 500);
+  
 });
 
-// Optimized scroll effect
 let ticking = false;
 function updateOnScroll() {
     const scrolled = window.pageYOffset;
@@ -145,7 +129,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Optimized skill items hover effect
+
 const skillItems = document.querySelectorAll('.skill-item');
 skillItems.forEach(item => {
     item.addEventListener('mouseenter', () => {
@@ -158,7 +142,7 @@ skillItems.forEach(item => {
     });
 });
 
-// Simplified project cards hover effect
+
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -171,19 +155,19 @@ projectCards.forEach(card => {
     });
 });
 
-// Contact form handling
+
 const contactForm = document.querySelector('.contact-form');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get form data
+    
     const formData = new FormData(contactForm);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
     
-    // Simple validation
+    
     if (!name || !email || !subject || !message) {
         showNotification('Please fill in all fields', 'error');
         return;
@@ -194,26 +178,26 @@ contactForm.addEventListener('submit', (e) => {
         return;
     }
     
-    // Simulate form submission
+
     showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
     contactForm.reset();
 });
 
-// Email validation function
+
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Notification system
+
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
+   
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
-    // Create notification element
+    
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -223,7 +207,7 @@ function showNotification(message, type = 'info') {
         </div>
     `;
     
-    // Add styles
+
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -239,22 +223,20 @@ function showNotification(message, type = 'info') {
         max-width: 400px;
     `;
     
-    // Add to page
+   
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Close button functionality
+
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
     });
     
-    // Auto remove after 5 seconds
     setTimeout(() => {
         if (notification.parentNode) {
             notification.style.transform = 'translateX(100%)';
@@ -263,9 +245,7 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Removed cursor trail for performance
 
-// Scroll progress indicator
 const progressBar = document.createElement('div');
 progressBar.className = 'scroll-progress';
 progressBar.style.cssText = `
@@ -288,9 +268,7 @@ window.addEventListener('scroll', () => {
     progressBar.style.width = scrollPercent + '%';
 });
 
-// Removed particles for performance
 
-// Optimized CSS injection
 const style = document.createElement('style');
 style.textContent = `
     .notification-content { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -300,7 +278,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Optimized reveal animation
+
 const revealElements = document.querySelectorAll('.about-text, .about-image, .skill-category, .project-card');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -318,11 +296,10 @@ revealElements.forEach((el, index) => {
     revealObserver.observe(el);
 });
 
-// Add loading animation
+
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
-    // Add loaded class styles
     const loadedStyle = document.createElement('style');
     loadedStyle.textContent = `
         body {
