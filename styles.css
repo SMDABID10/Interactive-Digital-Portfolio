@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -104,7 +104,7 @@ body {
     transition: 0.3s;
 }
 
-/* Hero Section */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -338,7 +338,6 @@ body {
     transform: rotate(45deg);
 }
 
-/* About Section */
 .about {
     padding: 100px 0;
     background: #f8fafc;
@@ -436,7 +435,7 @@ body {
     animation: float 3s ease-in-out infinite;
 }
 
-/* Skills Section */
+
 .skills {
     padding: 100px 0;
     background: white;
@@ -508,7 +507,7 @@ body {
     color: #64748b;
 }
 
-/* Projects Section */
+
 .projects {
     padding: 100px 0;
     background: #f8fafc;
@@ -617,7 +616,7 @@ body {
     font-weight: 500;
 }
 
-/* Contact Section */
+
 .contact {
     padding: 100px 0;
     background: white;
@@ -716,7 +715,7 @@ body {
     min-height: 120px;
 }
 
-/* Footer */
+
 .footer {
     background: #1e293b;
     color: white;
@@ -724,7 +723,7 @@ body {
     padding: 2rem 0;
 }
 
-/* Subtle Glow Effects */
+
 .subtle-glow {
     box-shadow: 0 0 15px rgba(15, 164, 175, 0.3), 0 0 30px rgba(15, 164, 175, 0.1);
     transition: box-shadow 0.3s ease;
@@ -734,7 +733,7 @@ body {
     box-shadow: 0 0 20px rgba(15, 164, 175, 0.4), 0 0 40px rgba(15, 164, 175, 0.2);
 }
 
-/* Optimized Animations */
+
 @keyframes slideInLeft {
     from {
         opacity: 0;
@@ -778,7 +777,7 @@ body {
     }
 }
 
-/* Optimized Responsive Design */
+
 @media (max-width: 768px) {
     .hamburger { display: flex; }
     .nav-menu {
